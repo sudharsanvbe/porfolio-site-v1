@@ -1,0 +1,2666 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+
+    <title>Hands-on Projects — Krshay Venkatesan</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* =========================================================
+           PROJECT PAGE SYSTEM
+           Header + .page-hero are intentionally NOT redesigned.
+        ========================================================= */
+
+        .project-page {
+            --blue: #0756c9;
+            --blue-dark: #102f67;
+            --blue-soft: #eaf2ff;
+            --orange: #ff641f;
+            --text: #17263d;
+            --muted: #66758b;
+            --line: rgba(7, 86, 201, .13);
+            --line-dark: rgba(16, 47, 103, .18);
+            --white: #ffffff;
+
+            background:
+                radial-gradient(circle at 10% 20%,
+                    rgba(7, 86, 201, .045),
+                    transparent 28%),
+                radial-gradient(circle at 90% 60%,
+                    rgba(255, 100, 31, .035),
+                    transparent 25%),
+                #f7faff;
+
+            color: var(--text);
+        }
+
+
+        /* =========================================================
+           COMMON CONTAINER
+        ========================================================= */
+
+        .project-page .container {
+            width: min(1240px, calc(100% - 80px));
+            margin: auto;
+        }
+
+
+        /* =========================================================
+           PROJECT SHOWCASE
+        ========================================================= */
+
+        .project-showcase {
+            position: relative;
+            overflow: hidden;
+
+            padding: 95px 0 120px;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(7, 86, 201, .035) 1px,
+                    transparent 1px),
+                linear-gradient(rgba(7, 86, 201, .035) 1px,
+                    transparent 1px);
+
+            background-size: 40px 40px;
+
+            border-top: 1px solid var(--line);
+        }
+
+
+        /* soft technical glow */
+
+        .project-showcase::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            top: 250px;
+            right: -250px;
+
+            background:
+                radial-gradient(circle,
+                    rgba(7, 86, 201, .07),
+                    transparent 65%);
+
+            pointer-events: none;
+        }
+
+
+        .project-showcase::after {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            bottom: 200px;
+            left: -250px;
+
+            background:
+                radial-gradient(circle,
+                    rgba(255, 100, 31, .045),
+                    transparent 65%);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           BREADCRUMB
+        ========================================================= */
+
+        .project-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 55px;
+
+            font-family: "Space Mono", monospace;
+            font-size: 8px;
+
+            letter-spacing: .14em;
+
+            text-transform: uppercase;
+        }
+
+
+        .project-breadcrumb span {
+            color: var(--muted);
+        }
+
+
+        .project-breadcrumb strong {
+            color: var(--blue);
+        }
+
+
+        .project-breadcrumb i {
+            color: var(--orange);
+            font-style: normal;
+        }
+
+
+        /* =========================================================
+           PROJECT INTRO
+        ========================================================= */
+
+        .project-intro {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 330px;
+
+            gap: 80px;
+
+            align-items: end;
+
+            margin-bottom: 70px;
+        }
+
+
+        .project-index {
+            margin-bottom: 15px;
+
+            font-family: "Space Mono", monospace;
+            font-size: 9px;
+
+            letter-spacing: .2em;
+
+            color: var(--blue);
+        }
+
+
+        .project-award {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 8px 13px;
+
+            margin-bottom: 22px;
+
+            background: var(--orange);
+
+            color: white;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            letter-spacing: .12em;
+
+            box-shadow:
+                5px 5px 0 rgba(16, 47, 103, .12);
+        }
+
+
+        .project-title h2 {
+            margin: 0 0 24px;
+
+            max-width: 900px;
+
+            font-size:
+                clamp(3.5rem, 7vw, 7.2rem);
+
+            line-height: .83;
+
+            letter-spacing: -.075em;
+
+            text-transform: uppercase;
+
+            color: var(--blue-dark);
+        }
+
+
+        .project-title h2::first-line {
+            color: var(--blue);
+        }
+
+
+        .project-title p {
+            max-width: 620px;
+
+            margin: 0;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           META PANEL
+        ========================================================= */
+
+        .project-meta {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            background:
+                rgba(255, 255, 255, .72);
+
+            border: 1px solid var(--line);
+
+            box-shadow:
+                15px 20px 50px rgba(16, 47, 103, .08);
+
+            backdrop-filter: blur(15px);
+        }
+
+
+        .meta-box {
+            position: relative;
+
+            min-height: 105px;
+
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+
+        .meta-box:nth-child(2n) {
+            border-right: 0;
+        }
+
+
+        .meta-box:nth-child(n+3) {
+            border-bottom: 0;
+        }
+
+
+        .meta-box::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 3px;
+            height: 0;
+
+            background: var(--orange);
+
+            transition: .35s ease;
+        }
+
+
+        .meta-box:hover::before {
+            height: 100%;
+        }
+
+
+        .meta-box span {
+            margin-bottom: 8px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 7px;
+
+            letter-spacing: .16em;
+
+            color: var(--muted);
+        }
+
+
+        .meta-box strong {
+            font-size: 15px;
+
+            color: var(--blue-dark);
+        }
+
+
+        .meta-box .status {
+            color: #16803c;
+        }
+
+
+        /* =========================================================
+           PROJECT MAIN GRID
+        ========================================================= */
+
+        .project-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.08fr) minmax(0, .92fr);
+
+            gap: 90px;
+
+            align-items: start;
+        }
+
+
+        /* =========================================================
+           ENGINEERING VISUAL
+        ========================================================= */
+
+        .project-visual {
+            position: sticky;
+
+            top: 100px;
+        }
+
+
+        .visual-label {
+            position: absolute;
+
+            z-index: 10;
+
+            padding: 9px 12px;
+
+            background: rgba(255, 255, 255, .9);
+
+            border: 1px solid var(--line);
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 7px;
+
+            letter-spacing: .13em;
+
+            color: var(--blue-dark);
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        .visual-label.top-left {
+            top: 18px;
+            left: 18px;
+        }
+
+
+        .visual-label.top-right {
+            top: 18px;
+            right: 18px;
+
+            color: var(--orange);
+        }
+
+
+        /* =========================================================
+           DRAWING STAGE
+        ========================================================= */
+
+        .drawing-stage {
+            position: relative;
+
+            min-height: 620px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(255, 255, 255, .98),
+                    rgba(239, 246, 255, .88));
+
+            border: 1px solid var(--line);
+
+            box-shadow:
+                20px 25px 70px rgba(16, 47, 103, .13);
+
+            transform-style: preserve-3d;
+
+            transition:
+                transform .25s ease,
+                box-shadow .4s ease;
+        }
+
+
+        .drawing-stage:hover {
+            box-shadow:
+                30px 35px 90px rgba(16, 47, 103, .18);
+        }
+
+
+        /* blueprint grid */
+
+        .drawing-grid {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(7, 86, 201, .075) 1px,
+                    transparent 1px),
+                linear-gradient(rgba(7, 86, 201, .075) 1px,
+                    transparent 1px);
+
+            background-size: 30px 30px;
+
+            opacity: .9;
+        }
+
+
+        /* fine radial grid */
+
+        .drawing-grid::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                radial-gradient(rgba(7, 86, 201, .16) 1px,
+                    transparent 1px);
+
+            background-size: 12px 12px;
+
+            opacity: .25;
+        }
+
+
+        /* image glow */
+
+        .drawing-glow {
+            position: absolute;
+
+            width: 440px;
+            height: 440px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(7, 86, 201, .13),
+                    transparent 65%);
+
+            filter: blur(3px);
+
+            transform: translateZ(20px);
+        }
+
+
+        /* =========================================================
+           ENGINEERING IMAGE
+        ========================================================= */
+
+        .drawing-stage img {
+            position: relative;
+
+            z-index: 4;
+
+            width: 76%;
+            max-height: 500px;
+
+            object-fit: contain;
+
+            transform:
+                translateZ(55px) rotate(-1deg);
+
+            filter:
+                drop-shadow(25px 30px 28px rgba(16, 47, 103, .18));
+
+            transition:
+                transform .5s cubic-bezier(.2, .8, .2, 1),
+                filter .4s ease;
+        }
+
+
+        .drawing-stage:hover img {
+            transform:
+                translateZ(80px) scale(1.045) rotate(0deg);
+
+            filter:
+                drop-shadow(35px 40px 35px rgba(16, 47, 103, .23));
+        }
+
+
+        /* =========================================================
+           TECHNICAL CORNER MARKS
+        ========================================================= */
+
+        .drawing-stage::before,
+        .drawing-stage::after {
+            content: "";
+
+            position: absolute;
+
+            width: 45px;
+            height: 45px;
+
+            border-color: var(--blue);
+
+            border-style: solid;
+
+            z-index: 8;
+
+            pointer-events: none;
+        }
+
+
+        .drawing-stage::before {
+            top: 20px;
+            left: 20px;
+
+            border-width: 2px 0 0 2px;
+        }
+
+
+        .drawing-stage::after {
+            right: 20px;
+            bottom: 20px;
+
+            border-width: 0 2px 2px 0;
+        }
+
+
+        /* =========================================================
+           DRAWING POINTS
+        ========================================================= */
+
+        .drawing-point {
+            position: absolute;
+
+            z-index: 8;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 9px 12px;
+
+            background:
+                rgba(255, 255, 255, .92);
+
+            border: 1px solid var(--line);
+
+            box-shadow:
+                8px 12px 25px rgba(16, 47, 103, .09);
+
+            backdrop-filter: blur(10px);
+
+            font-family: "Space Mono", monospace;
+
+            transform:
+                translateZ(60px);
+
+            transition: .35s ease;
+        }
+
+
+        .drawing-point:hover {
+            transform:
+                translateZ(90px) scale(1.04);
+        }
+
+
+        .drawing-point>span {
+            width: 25px;
+            height: 25px;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--blue);
+
+            color: white;
+
+            font-size: 7px;
+        }
+
+
+        .drawing-point strong {
+            display: block;
+
+            font-size: 7px;
+
+            letter-spacing: .1em;
+
+            color: var(--blue-dark);
+        }
+
+
+        .drawing-point small {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 6px;
+
+            color: var(--muted);
+        }
+
+
+        .point-one {
+            left: 22px;
+            top: 170px;
+        }
+
+
+        .point-two {
+            right: 22px;
+            top: 310px;
+        }
+
+
+        .point-three {
+            left: 55px;
+            bottom: 95px;
+        }
+
+
+        /* connection lines */
+
+        .drawing-point::after {
+            content: "";
+
+            position: absolute;
+
+            width: 70px;
+            height: 1px;
+
+            background:
+                linear-gradient(90deg,
+                    var(--orange),
+                    transparent);
+
+            opacity: .6;
+        }
+
+
+        .point-one::after {
+            right: -70px;
+            transform: rotate(12deg);
+        }
+
+
+        .point-two::after {
+            left: -70px;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    var(--blue));
+
+            transform: rotate(-12deg);
+        }
+
+
+        .point-three::after {
+            right: -70px;
+
+            transform: rotate(-18deg);
+        }
+
+
+        /* =========================================================
+           VISUAL CAPTION
+        ========================================================= */
+
+        .visual-caption {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding: 18px 20px;
+
+            background: white;
+
+            border:
+                1px solid var(--line);
+
+            border-top: 0;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            color: var(--muted);
+        }
+
+
+        .visual-caption span {
+            flex-shrink: 0;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 7px;
+
+            color: var(--orange);
+        }
+
+
+        /* =========================================================
+           INFORMATION COLUMN
+        ========================================================= */
+
+        .project-information {
+            position: relative;
+        }
+
+
+        .info-block {
+            display: grid;
+
+            grid-template-columns: 45px 1fr;
+
+            gap: 22px;
+
+            padding: 38px 0;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+
+        .info-number {
+            width: 34px;
+            height: 34px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--blue);
+
+            color: var(--blue);
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            transition: .3s;
+        }
+
+
+        .info-block:hover .info-number {
+            background: var(--blue);
+
+            color: white;
+
+            transform:
+                rotate(8deg) translateZ(15px);
+        }
+
+
+        .info-label {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            letter-spacing: .16em;
+
+            color: var(--orange);
+        }
+
+
+        .info-block h3 {
+            margin: 0 0 14px;
+
+            font-size: 27px;
+
+            line-height: 1.08;
+
+            letter-spacing: -.04em;
+
+            color: var(--blue-dark);
+        }
+
+
+        .info-block p {
+            margin: 0;
+
+            font-size: 13px;
+
+            line-height: 1.85;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           SOLUTION LIST
+        ========================================================= */
+
+        .solution-list {
+            margin-top: 20px;
+        }
+
+
+        .solution-list>div {
+            position: relative;
+
+            padding: 17px 0 17px 42px;
+
+            border-top: 1px dashed var(--line);
+        }
+
+
+        .solution-list>div>span {
+            position: absolute;
+
+            left: 0;
+            top: 18px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            color: var(--orange);
+        }
+
+
+        .solution-list strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 13px;
+
+            color: var(--blue-dark);
+        }
+
+
+        .solution-list p {
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           VALIDATION CARD
+        ========================================================= */
+
+        .validation-card {
+            position: relative;
+
+            margin-top: 35px;
+
+            padding: 30px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(135deg,
+                    #102f67,
+                    #0b2553);
+
+            color: white;
+
+            box-shadow:
+                15px 20px 50px rgba(16, 47, 103, .2);
+
+            transform-style: preserve-3d;
+        }
+
+
+        .validation-card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, .05) 1px,
+                    transparent 1px),
+                linear-gradient(rgba(255, 255, 255, .05) 1px,
+                    transparent 1px);
+
+            background-size: 25px 25px;
+
+            opacity: .7;
+        }
+
+
+        .validation-card>* {
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .validation-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 7px;
+
+            letter-spacing: .14em;
+
+            color: #a9c4ee;
+        }
+
+
+        .validation-top span:last-child {
+            color: #6ee7a1;
+        }
+
+
+        .validation-card h3 {
+            margin: 0 0 5px;
+
+            font-size: 25px;
+
+            color: white;
+        }
+
+
+        .validation-card>p {
+            margin: 0;
+
+            font-size: 11px;
+
+            color: #a9b9d2;
+        }
+
+
+        .validation-result {
+            display: flex;
+
+            align-items: end;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        .validation-result strong {
+            font-size: 55px;
+
+            line-height: .8;
+
+            letter-spacing: -.06em;
+
+            color: white;
+        }
+
+
+        .validation-result span {
+            padding-bottom: 4px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 7px;
+
+            color: #a9b9d2;
+        }
+
+
+        /* =========================================================
+           TECHNOLOGY SECTION
+        ========================================================= */
+
+        .technology-section {
+            margin-top: 120px;
+
+            padding-top: 90px;
+
+            border-top: 1px solid var(--line);
+        }
+
+
+        .technology-heading {
+            display: grid;
+
+            grid-template-columns: 250px 1fr;
+
+            gap: 60px;
+
+            align-items: end;
+
+            margin-bottom: 45px;
+        }
+
+
+        .technology-heading>span {
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            letter-spacing: .16em;
+
+            color: var(--orange);
+        }
+
+
+        .technology-heading h3 {
+            max-width: 650px;
+
+            margin: 0;
+
+            font-size:
+                clamp(2.8rem, 5vw, 5.5rem);
+
+            line-height: .88;
+
+            letter-spacing: -.07em;
+
+            text-transform: uppercase;
+
+            color: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           TECHNOLOGY GRID
+        ========================================================= */
+
+        .technology-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-top: 1px solid var(--line);
+
+            border-left: 1px solid var(--line);
+        }
+
+
+        .tech-card {
+            position: relative;
+
+            min-height: 220px;
+
+            padding: 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            overflow: hidden;
+
+            background:
+                rgba(255, 255, 255, .7);
+
+            border-right: 1px solid var(--line);
+
+            border-bottom: 1px solid var(--line);
+
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease,
+                background .4s ease;
+
+            transform-style: preserve-3d;
+        }
+
+
+        .tech-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            top: -30px;
+            right: -30px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(7, 86, 201, .12),
+                    transparent 70%);
+
+            transition: .5s;
+        }
+
+
+        .tech-card:hover {
+            background: white;
+
+            transform:
+                translateY(-8px) rotateX(3deg) rotateY(-2deg);
+
+            box-shadow:
+                15px 25px 50px rgba(16, 47, 103, .12);
+        }
+
+
+        .tech-card:hover::before {
+            transform: scale(2);
+        }
+
+
+        .tech-card>span {
+            position: absolute;
+
+            top: 25px;
+            left: 28px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            color: var(--orange);
+        }
+
+
+        .tech-card strong {
+            position: relative;
+
+            font-size: 30px;
+
+            letter-spacing: -.04em;
+
+            color: var(--blue-dark);
+
+            transform: translateZ(20px);
+        }
+
+
+        .tech-card small {
+            position: relative;
+
+            margin-top: 7px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           ACTION AREA
+        ========================================================= */
+
+        .project-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 80px;
+
+            padding-top: 35px;
+
+            border-top: 1px solid var(--line);
+        }
+
+
+        .project-button {
+            min-height: 48px;
+
+            padding: 0 20px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            text-decoration: none;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transition: .3s ease;
+        }
+
+
+        .project-button.primary {
+            background: var(--blue);
+
+            color: white;
+
+            box-shadow:
+                6px 6px 0 var(--orange);
+        }
+
+
+        .project-button.primary:hover {
+            transform:
+                translate(3px, 3px);
+
+            box-shadow:
+                2px 2px 0 var(--orange);
+        }
+
+
+        .project-button.secondary {
+            background: white;
+
+            border: 1px solid var(--line);
+
+            color: var(--blue-dark);
+        }
+
+
+        .project-button.secondary:hover {
+            border-color: var(--blue);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .project-button.ghost {
+            color: var(--muted);
+        }
+
+
+        .project-button.ghost:hover {
+            color: var(--blue);
+        }
+
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity .75s ease,
+                transform .75s cubic-bezier(.2, .8, .2, 1);
+        }
+
+
+        .reveal.show {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .project-page .site-footer {
+            position: relative;
+
+            padding: 55px 0;
+
+            background: #091b3d;
+
+            color: white;
+        }
+
+
+        .footer-grid {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 50px;
+        }
+
+
+        .footer-title {
+            font-size: 18px;
+
+            font-weight: 700;
+        }
+
+
+        .footer-meta {
+            margin-top: 6px;
+
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            letter-spacing: .1em;
+
+            color: #91a5c6;
+        }
+
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+            gap: 20px;
+        }
+
+
+        .footer-links a {
+            font-family: "Space Mono", monospace;
+
+            font-size: 8px;
+
+            color: #b9c7dc;
+
+            text-decoration: none;
+
+            transition: .25s;
+        }
+
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .project-intro {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+
+
+            .project-meta {
+                max-width: 600px;
+            }
+
+
+            .project-grid {
+                grid-template-columns: 1fr;
+
+                gap: 70px;
+            }
+
+
+            .project-visual {
+                position: relative;
+
+                top: 0;
+
+                max-width: 850px;
+
+                margin: auto;
+            }
+
+
+            .technology-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .project-page .container {
+                width:
+                    min(calc(100% - 36px),
+                        1240px);
+            }
+
+
+            .project-showcase {
+                padding:
+                    65px 0 80px;
+            }
+
+
+            .project-breadcrumb {
+                margin-bottom: 35px;
+
+                flex-wrap: wrap;
+            }
+
+
+            .project-title h2 {
+                font-size: 3.35rem;
+
+                line-height: .88;
+            }
+
+
+            .project-title p {
+                font-size: 13px;
+            }
+
+
+            .project-meta {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .meta-box {
+                min-height: 90px;
+
+                padding: 15px;
+            }
+
+
+            .drawing-stage {
+                min-height: 430px;
+            }
+
+
+            .drawing-stage img {
+                width: 88%;
+            }
+
+
+            .drawing-glow {
+                width: 300px;
+                height: 300px;
+            }
+
+
+            .drawing-point {
+                transform:
+                    scale(.82) translateZ(30px);
+            }
+
+
+            .point-one {
+                left: 8px;
+                top: 100px;
+            }
+
+
+            .point-two {
+                right: 8px;
+                top: 220px;
+            }
+
+
+            .point-three {
+                left: 18px;
+                bottom: 55px;
+            }
+
+
+            .drawing-point::after {
+                display: none;
+            }
+
+
+            .visual-label {
+                font-size: 6px;
+
+                padding: 7px 8px;
+            }
+
+
+            .visual-caption {
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+
+            .info-block {
+                grid-template-columns:
+                    35px 1fr;
+
+                gap: 12px;
+
+                padding: 30px 0;
+            }
+
+
+            .info-number {
+                width: 30px;
+                height: 30px;
+            }
+
+
+            .info-block h3 {
+                font-size: 22px;
+            }
+
+
+            .info-block p {
+                font-size: 12px;
+            }
+
+
+            .technology-section {
+                margin-top: 75px;
+
+                padding-top: 65px;
+            }
+
+
+            .technology-heading {
+                grid-template-columns: 1fr;
+
+                gap: 15px;
+            }
+
+
+            .technology-heading h3 {
+                font-size: 3rem;
+            }
+
+
+            .technology-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .tech-card {
+                min-height: 180px;
+            }
+
+
+            .project-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .project-button {
+                width: 100%;
+            }
+
+
+            .footer-grid {
+                flex-direction: column;
+            }
+
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+
+        }
+
+
+        /* =========================================================
+           VERY SMALL DEVICES
+        ========================================================= */
+
+        @media (max-width: 430px) {
+
+            .project-title h2 {
+                font-size: 2.8rem;
+            }
+
+
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
+
+            .meta-box,
+            .meta-box:nth-child(2n),
+            .meta-box:nth-child(n+3) {
+                border-right: 0;
+
+                border-bottom: 1px solid var(--line);
+            }
+
+
+            .meta-box:last-child {
+                border-bottom: 0;
+            }
+
+
+            .drawing-stage {
+                min-height: 360px;
+            }
+
+
+            .drawing-stage img {
+                width: 95%;
+            }
+
+
+            .drawing-point {
+                transform:
+                    scale(.68) translateZ(20px);
+            }
+
+        }
+    </style>
+</head>
+
+
+<body class="project-page">
+
+    <!-- =========================================================
+         COMMON HEADER — UNCHANGED
+    ========================================================== -->
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <!-- BRAND -->
+            <a class="brand" href="index.html">
+
+                <span class="brand-mark">
+                    K
+                </span>
+
+                <span class="brand-divider"></span>
+
+                <span class="brand-info">
+                    <strong>Krshay Venkatesan</strong>
+                    <small>Engineering · Motion · Systems</small>
+                </span>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+            <nav class="main-nav">
+
+                <a href="index.html" class="active">
+                    Home
+                </a>
+
+                <a href="research.html">
+                    Research
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="academics.html">
+                    Academics
+                </a>
+
+                <a href="internships.html">
+                    Internships
+                </a>
+
+                <a href="impact.html">
+                    Impact
+                </a>
+
+                <a href="awards.html">
+                    Awards
+                </a>
+
+            </nav>
+
+
+            <!-- HEADER ACTION -->
+
+
+        </div>
+
+    </header>
+
+
+    <main class="project-detail-page">
+
+
+        <!-- =====================================================
+             COMMON PAGE HERO — UNCHANGED
+        ====================================================== -->
+
+        <section class="page-hero">
+
+            <div class="container" style="max-width: 900px; text-align: center; margin-top: -5px;">
+
+                <div class="page-kicker">
+                    02 · Hands-on Project
+                </div>
+
+                <h1>
+                    Things<br>
+                    I built.
+                </h1>
+                <br>
+                <p style="max-width: 600px; margin: 0 auto;"">
+                    “Good data. Better insights. Better outcomes.”
+                    A collection of mechanical, embedded, AI and
+                    social-impact builds.
+                </p>
+
+                <a class=" btn back" href="index.html">
+                    ← Back to foundation
+                    </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PROJECT SHOWCASE
+        ====================================================== -->
+
+        <section class="project-showcase">
+
+            <div class="container">
+
+
+                <!-- Breadcrumb -->
+
+                <div class="project-breadcrumb reveal">
+
+                    <span>
+                        FOUNDATION
+                    </span>
+
+                    <i>/</i>
+
+                    <strong>
+                        HANDS-ON PROJECT
+                    </strong>
+
+                    <i>/</i>
+
+                    <span>
+                        PROJECT 01
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PROJECT INTRO
+                ================================================== -->
+
+                <div class="project-intro reveal">
+
+
+                    <div class="project-title">
+
+                        <div class="project-index">
+                            PROJECT / 01
+                        </div>
+
+
+                        <span class="project-award">
+                            ✦ CREST GOLD AWARD
+                        </span>
+
+
+                        <h2>
+                            Sensor-Based ACL
+                            <br>
+                            Rehab Knee Sleeve
+                        </h2>
+
+
+                        <p>
+                            Quantifying recovery through sensor fusion,
+                            embedded systems and human-centered engineering.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Technical Metadata -->
+
+                    <div class="project-meta">
+
+                        <div class="meta-box">
+
+                            <span>
+                                YEAR
+                            </span>
+
+                            <strong>
+                                2025
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-box">
+
+                            <span>
+                                STATUS
+                            </span>
+
+                            <strong class="status">
+                                Accepted
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-box">
+
+                            <span>
+                                PLATFORM
+                            </span>
+
+                            <strong>
+                                ESP32
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-box">
+
+                            <span>
+                                SENSORS
+                            </span>
+
+                            <strong>
+                                IMU
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MAIN PROJECT AREA
+                ================================================== -->
+
+                <div class="project-grid reveal">
+
+
+                    <!-- =================================================
+                         LEFT — ENGINEERING VISUAL
+                    ================================================== -->
+
+                    <div class="project-visual">
+
+
+                        <div class="visual-label top-left">
+                            FIG / 01
+                        </div>
+
+
+                        <div class="visual-label top-right">
+                            ENGINEERING DRAWING
+                        </div>
+
+
+
+                        <div class="drawing-stage">
+
+
+                            <!-- Blueprint grid -->
+
+                            <div class="drawing-grid"></div>
+
+
+                            <!-- Glow -->
+
+                            <div class="drawing-glow"></div>
+
+
+
+                            <!-- Main image -->
+
+                            <img src="assets/drawing/knee-1.png" alt="ACL rehabilitation knee sleeve engineering drawing">
+
+
+
+                            <!-- Technical points -->
+
+                            <div class="drawing-point point-one">
+
+                                <span>
+                                    01
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        IMU
+                                    </strong>
+
+                                    <small>
+                                        Motion sensing
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="drawing-point point-two">
+
+                                <span>
+                                    02
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        ESP32
+                                    </strong>
+
+                                    <small>
+                                        Edge controller
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="drawing-point point-three">
+
+                                <span>
+                                    03
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        SLEEVE
+                                    </strong>
+
+                                    <small>
+                                        Human interface
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- Caption -->
+
+                        <div class="visual-caption">
+
+                            <span>
+                                FIG 01.1
+                            </span>
+
+                            <div>
+                                Structural assembly and sensor-node
+                                positioning for gait analysis.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         RIGHT — INFORMATION
+                    ================================================== -->
+
+                    <div class="project-information">
+
+
+                        <!-- Summary -->
+
+                        <article class="info-block">
+
+                            <div class="info-number">
+                                01
+                            </div>
+
+
+                            <div>
+
+                                <span class="info-label">
+                                    EXECUTIVE SUMMARY
+                                </span>
+
+
+                                <h3>
+                                    Measuring recovery
+                                    through movement.
+                                </h3>
+
+
+                                <p>
+                                    Designed an IMU-based embedded system
+                                    using an ESP32 to quantify recovery
+                                    metrics for ACL rehabilitation patients.
+                                    The device provides objective,
+                                    data-driven recovery tracking as an
+                                    alternative to subjective clinical
+                                    assessment.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- Problem -->
+
+                        <article class="info-block">
+
+                            <div class="info-number">
+                                02
+                            </div>
+
+
+                            <div>
+
+                                <span class="info-label">
+                                    THE PROBLEM
+                                </span>
+
+
+                                <h3>
+                                    From subjective
+                                    assessment to data.
+                                </h3>
+
+
+                                <p>
+                                    Traditional ACL recovery tracking
+                                    relies on periodic clinical
+                                    evaluations. This lacks granularity
+                                    and fails to capture daily movement
+                                    deviations.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- Solution -->
+
+                        <article class="info-block">
+
+                            <div class="info-number">
+                                03
+                            </div>
+
+
+                            <div>
+
+                                <span class="info-label">
+                                    ENGINEERING SOLUTION
+                                </span>
+
+
+                                <div class="solution-list">
+
+
+                                    <div>
+
+                                        <span>
+                                            01
+                                        </span>
+
+                                        <strong>
+                                            Sensor Fusion
+                                        </strong>
+
+                                        <p>
+                                            Accelerometer and gyroscope
+                                            data used to calculate joint
+                                            movement.
+                                        </p>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span>
+                                            02
+                                        </span>
+
+                                        <strong>
+                                            Edge Processing
+                                        </strong>
+
+                                        <p>
+                                            ESP32 performs local filtering
+                                            to reduce latency.
+                                        </p>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span>
+                                            03
+                                        </span>
+
+                                        <strong>
+                                            Human-Centered Design
+                                        </strong>
+
+                                        <p>
+                                            Integrated into a breathable
+                                            compression sleeve.
+                                        </p>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- =================================================
+                             VALIDATION
+                        ================================================== -->
+
+
+
+                    </div>
+
+                </div>
+
+                <article class="validation-card" style="width: 100%;display:flex;">
+
+                    <div>
+                        <div class="validation-top">
+
+                            <span>
+                                ACADEMIC VENUE
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            Young Scientist Journal
+                        </h3>
+
+
+                        <p>
+                            Vanderbilt University
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="validation-result" style="margin-left: auto;">
+
+                        <strong>
+                            94%
+                        </strong>
+
+                        <span>
+                            measurement accuracy
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     TECHNOLOGY
+                ================================================== -->
+
+                <div class="technology-section reveal">
+
+
+                    <div class="technology-heading">
+
+                        <span>
+                            TECHNICAL STACK
+                        </span>
+
+
+                        <h3>
+                            Hardware meets
+                            human movement.
+                        </h3>
+
+                    </div>
+
+
+
+                    <div class="technology-grid">
+
+
+                        <div class="tech-card has-image">
+                            <div class="card-image-wrapper">
+                                <img src="assets/project/esp32.png" alt="ESP32" class="bg-drawing">
+                                <div class="scanner-line"></div> <!-- The trending scan effect -->
+                            </div>
+                                <span>01</span>
+                                <strong>ESP32</strong>
+                                <small>Embedded controller</small>
+                        </div>
+                        
+
+
+                        <div class="tech-card">
+                            <div class="card-image-wrapper">
+                                <img src="assets/project/imu.png" alt="IMU" class="bg-drawing">
+                                <div class="scanner-line"></div> <!-- The trending scan effect -->
+                            </div>
+                            <span>
+                                02
+                            </span>
+
+                            <strong>
+                                IMU
+                            </strong>
+
+                            <small>
+                                Motion sensing
+                            </small>
+
+                        </div>
+
+
+                        <div class="tech-card">
+                            <div class="card-image-wrapper">
+                                <img src="assets/project/data.png" alt="IMU" class="bg-drawing">
+                                <div class="scanner-line"></div> <!-- The trending scan effect -->
+                            </div>
+                            <span>
+                                03
+                            </span>
+
+                            <strong>
+                                DATA
+                            </strong>
+
+                            <small>
+                                Movement analysis
+                            </small>
+
+                        </div>
+
+
+                        <div class="tech-card">
+                            <div class="card-image-wrapper">
+                                <img src="assets/project/cad.png" alt="IMU" class="bg-drawing">
+                                <div class="scanner-line"></div> <!-- The trending scan effect -->
+                            </div>
+                            <span>
+                                04
+                            </span>
+
+                            <strong>
+                                CAD
+                            </strong>
+
+                            <small>
+                                Engineering design
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTIONS
+                ================================================== -->
+
+                <div class="project-actions reveal">
+
+
+                    <a href="#" class="project-button primary">
+                        <span>↗</span>
+
+                        Download Research Paper
+
+                    </a>
+
+
+                    <a href="#" class="project-button secondary">
+                        <span>⌘</span>
+
+                        View CAD Models
+
+                    </a>
+
+
+                    <a href="projects.html" class="project-button ghost">
+                        ← All Projects
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <div>
+
+                <div class="footer-title">
+                    Krshay Venkatesan
+                </div>
+
+                <div class="footer-meta">
+                    Engineering · Motion · Systems
+                </div>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="research.html">
+                    Research
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="academics.html">
+                    Academic Credentials
+                </a>
+
+                <a href="internships.html">
+                    Internships
+                </a>
+
+                <a href="impact.html">
+                    Impact
+                </a>
+
+                <a href="awards.html">
+                    Honors & Awards
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.08
+                }
+
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(element => {
+
+                revealObserver.observe(element);
+
+            });
+
+
+
+        /* =====================================================
+           3D ENGINEERING DRAWING
+        ===================================================== */
+
+        const drawingStages =
+            document.querySelectorAll(
+                ".drawing-stage"
+            );
+
+
+        drawingStages.forEach(stage => {
+
+
+            stage.addEventListener(
+                "mousemove",
+                event => {
+
+
+                    if (
+                        window.innerWidth < 800
+                    ) return;
+
+
+                    const rect =
+                        stage.getBoundingClientRect();
+
+
+                    const x =
+                        (event.clientX - rect.left)
+                        / rect.width;
+
+
+                    const y =
+                        (event.clientY - rect.top)
+                        / rect.height;
+
+
+                    const rotateY =
+                        (x - .5) * 9;
+
+
+                    const rotateX =
+                        (.5 - y) * 9;
+
+
+                    stage.style.transform =
+                        `
+                        perspective(1100px)
+                        rotateX(${rotateX}deg)
+                        rotateY(${rotateY}deg)
+                        translateZ(8px)
+                        `;
+
+                }
+            );
+
+
+            stage.addEventListener(
+                "mouseleave",
+                () => {
+
+                    stage.style.transform =
+                        `
+                        perspective(1100px)
+                        rotateX(0deg)
+                        rotateY(0deg)
+                        translateZ(0)
+                        `;
+
+                }
+            );
+
+
+        });
+
+
+
+        /* =====================================================
+           TECH CARD 3D MOVEMENT
+        ===================================================== */
+
+        document
+            .querySelectorAll(".tech-card")
+            .forEach(card => {
+
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+
+                        if (
+                            window.innerWidth < 800
+                        ) return;
+
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top;
+
+
+                        const rotateY =
+                            ((x / rect.width) - .5)
+                            * 7;
+
+
+                        const rotateX =
+                            (.5 - (y / rect.height))
+                            * 7;
+
+
+                        card.style.transform =
+                            `
+                            perspective(800px)
+                            rotateX(${rotateX}deg)
+                            rotateY(${rotateY}deg)
+                            translateY(-8px)
+                            `;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+
+            });
+
+
+    </script>
+    <script src="header.js"></script>
+
+</body>
+
+</html>
