@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+    <title>Honors & Awards — Krshay Venkatesan</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* =========================================================
+           HONORS & AWARDS — TRENDING BLUEPRINT / EDITORIAL STYLE
+        ========================================================= */
+
+        .content-section.light {
+            --award-blue: #1769aa;
+            --award-blue-dark: #0b3d66;
+            --award-blue-soft: #eaf4fb;
+            --award-orange: #e8751a;
+            --award-orange-soft: #fff3e8;
+            --award-ink: #10202f;
+            --award-muted: #607080;
+            --award-line: rgba(23, 105, 170, .18);
+
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            color: var(--award-ink);
+            background:
+                linear-gradient(rgba(23, 105, 170, .035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(23, 105, 170, .035) 1px, transparent 1px),
+                #f8fafc;
+            background-size: 42px 42px;
+        }
+
+        .content-section.light::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: .5;
+            background:
+                linear-gradient(rgba(23, 105, 170, .06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(23, 105, 170, .06) 1px, transparent 1px);
+            background-size: 210px 210px;
+        }
+
+        .content-section.light::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            right: -220px;
+            top: 100px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle, rgba(232, 117, 26, .08), transparent 68%);
+        }
+
+        .content-section.light h2::after {
+            content: "";
+            display: block;
+            width: 78px;
+            height: 4px;
+            margin-top: 28px;
+            background: var(--award-orange);
+        }
+
+        /* =========================================================
+           AWARDS GRID
+        ========================================================= */
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .award-card {
+            position: relative;
+            min-height: 315px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, .99), rgba(246, 250, 253, .96));
+            border: 1px solid var(--award-line);
+            border-radius: 4px;
+            box-shadow:
+                7px 7px 0 rgba(23, 105, 170, .035),
+                0 15px 35px rgba(16, 40, 60, .06);
+            overflow: hidden;
+            transition:
+                transform .35s cubic-bezier(.2, .8, .2, 1),
+                border-color .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .award-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid var(--award-blue);
+            border-top: 2px solid var(--award-blue);
+        }
+
+        .award-card::after {
+            content: attr(data-index);
+            position: absolute;
+            right: 16px;
+            top: 15px;
+            width: auto;
+            height: auto;
+            border: 0;
+            color: rgba(23, 105, 170, .35);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: .16em;
+        }
+
+        .award-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(23, 105, 170, .42);
+            box-shadow:
+                10px 12px 0 rgba(23, 105, 170, .05),
+                0 25px 55px rgba(16, 40, 60, .13);
+        }
+
+        .award-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .award-medal {
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 24px;
+            background: var(--award-blue-soft);
+            border: 1px solid rgba(23, 105, 170, .25);
+            font-size: 22px;
+            transition: .35s ease;
+        }
+
+        .award-card:hover .award-medal {
+            transform: translateY(-3px) rotate(5deg);
+            background: var(--award-orange-soft);
+            border-color: rgba(232, 117, 26, .35);
+        }
+
+        .award-card h3 {
+            margin: 0 35px 15px 0;
+            color: var(--award-blue-dark);
+            font-size: 1.12rem;
+            line-height: 1.3;
+            letter-spacing: -.025em;
+        }
+
+        .award-card h3::before {
+            content: "//";
+            margin-right: 9px;
+            color: var(--award-orange);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: .72em;
+        }
+
+        .award-card p {
+            margin: 0;
+            padding-top: 14px;
+            border-top: 1px dashed var(--award-line);
+            color: var(--award-orange);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: .67rem;
+            line-height: 1.6;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           VIEW AWARD / CERTIFICATE BUTTON
+        ========================================================= */
+
+        .award-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 24px;
+        }
+
+        .award-certificate-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 40px;
+            padding: 10px 14px 10px 16px;
+            color: #fff;
+            background: #0b3d66;
+            border: 1px solid #0b3d66;
+            border-radius: 2px;
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .award-certificate-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 0;
+            background: var(--award-orange);
+            transition: width .3s ease;
+            z-index: 0;
+        }
+
+        .award-certificate-btn span,
+        .award-certificate-btn strong {
+            position: relative;
+            z-index: 1;
+        }
+
+        .award-certificate-btn strong {
+            font-size: 14px;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .award-certificate-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--award-orange);
+            background: var(--award-orange);
+            box-shadow: 0 8px 20px rgba(232, 117, 26, .18);
+        }
+
+        .award-certificate-btn:hover::before {
+            width: 100%;
+        }
+
+        .award-file-label {
+            color: rgba(23, 105, 170, .55);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 7px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           EXTRACURRICULAR
+        ========================================================= */
+
+        .blueprint-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: var(--award-orange);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .blueprint-kicker::before {
+            content: "";
+            width: 25px;
+            height: 2px;
+            background: var(--award-orange);
+        }
+
+        .content-section.light .academic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .content-section.light .academic-card {
+            position: relative;
+            min-height: 125px;
+            padding: 28px 30px;
+            background: rgba(255, 255, 255, .92);
+            border: 1px solid var(--award-line);
+            box-shadow: 5px 5px 0 rgba(23, 105, 170, .025);
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .content-section.light .academic-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--award-blue), var(--award-orange));
+        }
+
+        .content-section.light .academic-card::after {
+            content: "PROFILE";
+            position: absolute;
+            right: 18px;
+            top: 14px;
+            color: rgba(23, 105, 170, .35);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 7px;
+            letter-spacing: .14em;
+        }
+
+        .content-section.light .academic-card h3 {
+            margin: 0 75px 18px 0;
+            color: var(--award-blue-dark);
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+
+        .content-section.light .score-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 20px;
+            align-items: center;
+            padding-top: 13px;
+            border-top: 1px dashed var(--award-line);
+            color: var(--award-muted);
+            font-size: .78rem;
+            line-height: 1.5;
+        }
+
+        .content-section.light .score {
+            color: var(--award-orange);
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .content-section.light .academic-card:hover {
+            transform: translateY(-5px) translateX(3px);
+            border-color: rgba(23, 105, 170, .35);
+            box-shadow: 7px 8px 0 rgba(23, 105, 170, .045), 0 18px 35px rgba(16, 40, 60, .08);
+        }
+
+        /* =========================================================
+           REVEAL
+        ========================================================= */
+
+        .content-section.light .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .content-section.light .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+            .awards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .content-section.light .academic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .content-section.light {
+                background-size: 28px 28px;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .award-card {
+                min-height: 285px;
+                padding: 25px;
+            }
+
+            .award-actions {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .award-certificate-btn {
+                width: 100%;
+            }
+
+            .content-section.light .academic-card {
+                padding: 24px 22px;
+            }
+
+            .content-section.light .score-row {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            .content-section.light .score {
+                justify-self: start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .award-card,
+            .award-medal,
+            .award-certificate-btn,
+            .content-section.light .academic-card,
+            .content-section.light .reveal {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <!-- BRAND -->
+            <a class="brand" href="index.html" aria-label="Krshay Venkatesan — Home" style="margin-bottom: 10px;">
+                <span class="brand-mark">K</span>
+                <span class="brand-name">
+                </span>
+                <br>
+            </a>
+            <!-- NAVIGATION -->
+            <nav class="main-nav" aria-label="Primary navigation">
+
+                <a href="index.html" class="active">
+                    <span>HOME</span>
+                </a>
+
+                <a href="research.html">
+                    <span>RESEARCH</span>
+                </a>
+
+                <a href="projects.html">
+                    <span>PROJECTS</span>
+                </a>
+
+                <a href="internships.html">
+                    <span>INTERNSHIPS</span>
+                </a>
+
+                <a href="academics.html">
+                    <span>ACADEMIC</span>
+                </a>
+
+                <a href="impact.html">
+                    <span>IMPACT</span>
+                </a>
+
+                <a href="awards.html">
+                    <span>AWARDS</span>
+                </a>
+
+                <a href="interests.html">
+                    <span>INTERESTS</span>
+                </a>
+
+            </nav>
+
+            <!-- MOBILE MENU -->
+            <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" onclick="
+                    document.body.classList.toggle('menu-open');
+                    this.setAttribute(
+                        'aria-expanded',
+                        document.body.classList.contains('menu-open')
+                    );
+                ">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="page-hero">
+            <div class="container" style="max-width: 900px; text-align: center; margin-top: -25px;">
+                <div class="page-kicker">06 · Honors & Awards</div>
+                <h1>Proof<br>of work.</h1>
+                <br>
+                <p style="max-width: 600px; margin: 0 auto;">
+                    Awards, competitions, communication, leadership and extracurricular work
+                    that sit alongside the engineering journey.
+                </p>
+                <a class="btn back" href="index.html">← Back to foundation</a>
+            </div>
+        </section>
+
+        <section class="content-section light">
+            <div class="container">
+
+                <h2>Honors<br>& awards.</h2>
+
+                <div class="awards-grid">
+
+                    <article class="award-card reveal" data-index="01">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">🥇</div>
+                            </div>
+                            <h3>Asian Int'l Mathematics Olympiad (AIMO)</h3>
+                            <p>Gold Medal</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Award / Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/aimo-gold-medal.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Award</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="award-card reveal" data-index="02">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">🥇</div>
+                            </div>
+                            <h3>Hong Kong Int'l Mathematics Olympiad (HKIMO)</h3>
+                            <p>Gold Medal</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Award / Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/hkimo-gold-medal.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Award</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="award-card reveal" data-index="03">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">⭐</div>
+                            </div>
+                            <h3>Canadian Computing Contest 2026</h3>
+                            <p>Distinction · Junior · 52/75</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Certificate</span>
+                            <a class="award-certificate-btn"
+                                href="assets/certificates/canadian-computing-contest-2026.pdf" target="_blank"
+                                rel="noopener">
+                                <span>View Certificate</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="award-card reveal" data-index="04">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">🏆</div>
+                            </div>
+                            <h3>World Scholar's Cup — Yale Invitational</h3>
+                            <p>13th in the World · Runner-Up</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Award / Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/world-scholars-cup-yale.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Award</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="award-card reveal" data-index="05">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">⭐</div>
+                            </div>
+                            <h3>AMC 10 (2024)</h3>
+                            <p>Highest Score — School</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/amc-10-2024.pdf" target="_blank"
+                                rel="noopener">
+                                <span>View Certificate</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="award-card reveal" data-index="06">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">⭐</div>
+                            </div>
+                            <h3>CEMC Pascal 2024</h3>
+                            <p>Distinction</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/cemc-pascal-2024.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Certificate</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="award-card reveal" data-index="07">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">⭐</div>
+                            </div>
+                            <h3>Avogadro Chemistry Exam 2026</h3>
+                            <p>Distinction</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/avogadro-chemistry-2026.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Certificate</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="award-card reveal" data-index="08">
+                        <div>
+                            <div class=" award-top">
+                                <div class="award-medal">🏅</div>
+                            </div>
+                            <h3>Infinity Maths Competition 2024</h3>
+                            <p>India South Zone Runner-Up</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Award / Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/infinity-maths-2024.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Award</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="award-card reveal" data-index="09">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">🏆</div>
+                            </div>
+                            <h3>AP Scholar Award</h3>
+                            <p>College Board · Calculus BC + CS A</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Award / Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/ap-scholar-award.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Award</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="award-card reveal" data-index="10">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">🎤</div>
+                            </div>
+                            <h3>Trinity Communication Grades 1–7</h3>
+                            <p>Distinction at every grade</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Certificates</span>
+                            <a class="award-certificate-btn"
+                                href="assets/certificates/trinity-communication-grades-1-7.pdf" target="_blank"
+                                rel="noopener">
+                                <span>View Certificates</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="award-card reveal" data-index="11">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">⭐</div>
+                            </div>
+                            <h3>Sir Isaac Newton Physics Exam 2026</h3>
+                            <p>Distinction</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Certificate</span>
+                            <a class="award-certificate-btn"
+                                href="assets/certificates/sir-isaac-newton-physics-2026.pdf" target="_blank"
+                                rel="noopener">
+                                <span>View Certificate</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="award-card reveal" data-index="12">
+                        <div>
+                            <div class="award-top">
+                                <div class="award-medal">🥇</div>
+                            </div>
+                            <h3>CREST Gold Award</h3>
+                            <p>ACL Rehabilitation Knee Sleeve Research</p>
+                        </div>
+                        <div class="award-actions">
+                            <span class="award-file-label">Award / Certificate</span>
+                            <a class="award-certificate-btn" href="assets/certificates/crest-gold-award.pdf"
+                                target="_blank" rel="noopener">
+                                <span>View Award</span><strong>↗</strong>
+                            </a>
+                        </div>
+                    </article>
+
+
+
+                </div>
+
+                <div style="margin-top:80px">
+                    <div class="blueprint-kicker">Extracurricular activities</div>
+
+                    <div class="academic-grid">
+
+                        <article class="academic-card">
+                            <h3>World Scholar's Cup</h3>
+                            <div class="score-row">
+                                <span>Global academic competition</span>
+                                <span class="score">13th Global</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>Trinity College London — Communication</h3>
+                            <div class="score-row">
+                                <span>Grades 1–7 in Communication & Public Speaking</span>
+                                <span class="score">Distinction ×7</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>Re-Spectable — Non-Profit Founder</h3>
+                            <div class="score-row">
+                                <span>5 active cities, 350+ frames in-system, 40+ clinical matches</span>
+                                <span class="score">Founder</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>1M1B AppliedAI — Curriculum Designer</h3>
+                            <div class="score-row">
+                                <span>Designed 3-tier AI curriculum; piloted with 55 students</span>
+                                <span class="score">Social Impact</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>ISSO Nationals — Best U17 Athlete</h3>
+                            <div class="score-row">
+                                <span>2 Gold, 1 Silver across 1500m, 3000m, 800m</span>
+                                <span class="score">Best Athlete</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>SGFI Nationals 2024 & 2025</h3>
+                            <div class="score-row">
+                                <span>Represented ISSO at School Games Federation of India Nationals</span>
+                                <span class="score">National</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>ISF Bahrain — India Representative</h3>
+                            <div class="score-row">
+                                <span>Represented India at the International School Federation Games</span>
+                                <span class="score">India Rep.</span>
+                            </div>
+                        </article>
+
+                        <article class="academic-card">
+                            <h3>TNCA 4th Division League Cricket</h3>
+                            <div class="score-row">
+                                <span>Senior club level; TN U14 & U16 State Probables</span>
+                                <span class="score">State Level</span>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">Krshay Venkatesan</div>
+                <div class="footer-meta">Engineering · Motion · Systems</div>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="academics.html">Academic Credentials</a>
+                <a href="internships.html">Internships</a>
+                <a href="impact.html">Impact</a>
+                <a href="awards.html">Honors & Awards</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const io = new IntersectionObserver(
+            entries => entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("show");
+            }),
+            { threshold: .08 }
+        );
+
+        document.querySelectorAll(".reveal").forEach(element => io.observe(element));
+    </script>
+
+    <script src="header.js"></script>
+
+</body>
+
+</html>

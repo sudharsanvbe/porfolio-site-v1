@@ -1,0 +1,2066 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+    <title>Research Paper — Krshay Venkatesan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* =========================================================
+   KRSHAY — RESEARCH FIELD NOTES
+   BLUEPRINT / 3D / TECHNICAL PORTFOLIO SYSTEM
+========================================================= */
+
+    :root {
+        --research-blue: #075bd3;
+        --research-blue-dark: #092b63;
+        --research-navy: #0b1d3a;
+        --research-orange: #ff5b19;
+
+        --research-text: #13233f;
+        --research-muted: #64748b;
+
+        --research-grid: rgba(20, 88, 170, .095);
+        --research-line: rgba(7, 91, 211, .18);
+
+        --research-paper: #f7faff;
+
+        --display: 'Space Grotesk', sans-serif;
+        --mono: 'DM Mono', monospace;
+        --hand: 'Caveat', cursive;
+    }
+
+
+    /* =========================================================
+   PAGE BACKGROUND
+========================================================= */
+
+    body {
+        background:
+            linear-gradient(90deg,
+                rgba(255, 255, 255, .94),
+                rgba(247, 250, 255, .97));
+
+        color: var(--research-text);
+    }
+
+
+    /* Blueprint grid continues through entire research page */
+
+    .research-journal {
+
+        position: relative;
+
+        padding:
+            110px 0 150px;
+
+        overflow: hidden;
+
+        background-color: var(--research-paper);
+
+        background-image:
+            linear-gradient(var(--research-grid) 1px,
+                transparent 1px),
+            linear-gradient(90deg,
+                var(--research-grid) 1px,
+                transparent 1px);
+
+        background-size:
+            40px 40px;
+
+        perspective: 1600px;
+    }
+
+
+    /* Large technical glow */
+
+    .research-journal::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 700px;
+        height: 700px;
+
+        right: -300px;
+        top: 100px;
+
+        background:
+            radial-gradient(circle,
+                rgba(7, 91, 211, .10),
+                transparent 65%);
+
+        pointer-events: none;
+    }
+
+
+    /* Secondary orange glow */
+
+    .research-journal::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 450px;
+        height: 450px;
+
+        left: -250px;
+        bottom: 100px;
+
+        background:
+            radial-gradient(circle,
+                rgba(255, 91, 25, .055),
+                transparent 70%);
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================================
+   TECHNICAL HEADER
+========================================================= */
+
+    .journal-header {
+
+        position: relative;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr) 360px;
+
+        align-items: end;
+
+        gap: 60px;
+
+        margin-bottom: 100px;
+
+        z-index: 3;
+    }
+
+
+    .journal-header::after {
+
+        content:
+            "RESEARCH SYSTEM / 01";
+
+        position: absolute;
+
+        right: 0;
+        top: -30px;
+
+        font-family: var(--mono);
+
+        font-size: 9px;
+
+        letter-spacing: .22em;
+
+        color:
+            rgba(7, 91, 211, .45);
+    }
+
+
+    .journal-header .kicker {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        font-family: var(--mono);
+
+        font-size: .68rem;
+
+        font-weight: 700;
+
+        letter-spacing: .2em;
+
+        text-transform: uppercase;
+
+        color: var(--research-orange);
+
+        margin-bottom: 18px;
+    }
+
+
+    .journal-header .kicker::before {
+
+        content: "";
+
+        width: 32px;
+        height: 2px;
+
+        background: var(--research-orange);
+    }
+
+
+    .journal-header h2 {
+
+        margin: 0;
+
+        font-family: var(--display);
+
+        font-size:
+            clamp(3.5rem,
+                7vw,
+                7.5rem);
+
+        line-height: .82;
+
+        letter-spacing: -.075em;
+
+        text-transform: uppercase;
+
+        color: var(--research-navy);
+    }
+
+
+    .journal-header h2 span {
+
+        color: var(--research-blue);
+    }
+
+
+    .journal-header::marker {
+        display: none;
+    }
+
+
+    /* =========================================================
+   HEADER SIDE INFORMATION
+========================================================= */
+
+    .journal-header>div:last-child {
+
+        position: relative;
+    }
+
+
+    .journal-header p {
+
+        margin: 0;
+
+        color: var(--research-muted);
+
+        font-size: .82rem;
+
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+   RESEARCH STACK
+========================================================= */
+
+    .research-stack {
+
+        position: relative;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 120px;
+
+        z-index: 2;
+    }
+
+
+    /* vertical research axis */
+
+    .research-stack::before {
+
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        bottom: 0;
+
+        left: 50%;
+
+        width: 1px;
+
+        background:
+            repeating-linear-gradient(to bottom,
+                rgba(7, 91, 211, .25) 0 5px,
+                transparent 5px 12px);
+
+        transform: translateX(-50%);
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================================
+   RESEARCH ENTRY
+========================================================= */
+
+    .research-entry {
+
+        position: relative;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr) minmax(0, 1fr);
+
+        align-items: center;
+
+        gap: 90px;
+
+        min-height: 480px;
+
+        transform-style: preserve-3d;
+    }
+
+
+    /* alternating layout */
+
+    .research-entry.reverse {
+
+        direction: rtl;
+    }
+
+
+    .research-entry.reverse>* {
+
+        direction: ltr;
+    }
+
+
+    /* =========================================================
+   ENTRY NUMBER
+========================================================= */
+
+    .research-entry::before {
+
+        content: attr(data-number);
+
+        position: absolute;
+
+        left: 50%;
+
+        top: 50%;
+
+        transform:
+            translate(-50%, -50%);
+
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border:
+            1px solid rgba(7, 91, 211, .35);
+
+        border-radius: 50%;
+
+        background:
+            rgba(247, 250, 255, .94);
+
+        backdrop-filter: blur(10px);
+
+        color: var(--research-blue);
+
+        font-family: var(--mono);
+
+        font-size: .65rem;
+
+        font-weight: 700;
+
+        box-shadow:
+            0 8px 25px rgba(7, 91, 211, .12);
+
+        z-index: 8;
+    }
+
+
+    /* =========================================================
+   MEDIA
+========================================================= */
+
+    .research-media {
+
+        position: relative;
+
+        min-width: 0;
+
+        transform-style: preserve-3d;
+    }
+
+
+    /* floating blueprint frame */
+
+    .media-frame {
+
+        position: relative;
+
+        padding: 18px;
+
+        background:
+            rgba(255, 255, 255, .88);
+
+        border:
+            1px solid rgba(7, 91, 211, .22);
+
+        box-shadow:
+
+            12px 12px 0 rgba(7, 91, 211, .07),
+
+            0 25px 60px rgba(11, 29, 58, .12),
+
+            inset 0 0 0 1px rgba(255, 255, 255, .8);
+
+        transform:
+            translateZ(20px) rotateY(-2deg);
+
+        transform-style: preserve-3d;
+
+        transition:
+            transform .65s cubic-bezier(.2, .8, .2, 1),
+            box-shadow .65s ease;
+    }
+
+
+    /* opposite tilt */
+
+    .research-entry.reverse .media-frame {
+
+        transform:
+            translateZ(20px) rotateY(2deg);
+    }
+
+
+    /* technical corner */
+
+    .media-frame::before,
+    .media-frame::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 26px;
+        height: 26px;
+
+        z-index: 5;
+
+        pointer-events: none;
+    }
+
+
+    .media-frame::before {
+
+        left: 8px;
+        top: 8px;
+
+        border-left:
+            2px solid var(--research-blue);
+
+        border-top:
+            2px solid var(--research-blue);
+    }
+
+
+    .media-frame::after {
+
+        right: 8px;
+        bottom: 8px;
+
+        border-right:
+            2px solid var(--research-blue);
+
+        border-bottom:
+            2px solid var(--research-blue);
+    }
+
+
+    /* Blueprint grid inside image */
+
+    .media-frame {
+
+        background-image:
+
+            linear-gradient(rgba(7, 91, 211, .045) 1px,
+                transparent 1px),
+
+            linear-gradient(90deg,
+                rgba(7, 91, 211, .045) 1px,
+                transparent 1px);
+
+        background-size: 20px 20px;
+    }
+
+
+    /* image */
+
+    .blueprint-img {
+
+        width: 100%;
+
+        aspect-ratio: 4 / 3;
+
+        object-fit: contain;
+
+        display: block;
+
+        position: relative;
+
+        z-index: 2;
+
+        background:
+            rgba(255, 255, 255, .75);
+
+        mix-blend-mode: multiply;
+
+        filter:
+            saturate(.75) contrast(1.05);
+
+        transition:
+            transform .7s cubic-bezier(.2, .8, .2, 1),
+            filter .5s ease;
+    }
+
+
+    /* Hover image */
+
+    .research-media:hover .media-frame {
+
+        transform:
+            translateY(-12px) translateZ(45px) rotateY(0deg) rotateX(2deg);
+
+        box-shadow:
+
+            20px 25px 0 rgba(7, 91, 211, .07),
+
+            0 35px 80px rgba(11, 29, 58, .18);
+    }
+
+
+    .research-media:hover .blueprint-img {
+
+        transform:
+            scale(1.035);
+
+        filter:
+            saturate(1) contrast(1.08);
+    }
+
+
+    /* =========================================================
+   SCAN LINE
+========================================================= */
+
+    .media-frame .scan-line {
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        top: 0;
+
+        height: 2px;
+
+        background:
+            linear-gradient(90deg,
+                transparent,
+                var(--research-blue),
+                transparent);
+
+        opacity: .6;
+
+        z-index: 6;
+
+        animation:
+            researchScan 4s linear infinite;
+    }
+
+
+    @keyframes researchScan {
+
+        0% {
+            transform: translateY(0);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: .7;
+        }
+
+        90% {
+            opacity: .7;
+        }
+
+        100% {
+            transform: translateY(390px);
+            opacity: 0;
+        }
+    }
+
+
+    /* =========================================================
+   DOCUMENT TAG
+========================================================= */
+
+    .document-tag {
+
+        position: absolute;
+
+        top: 25px;
+        right: 25px;
+
+        padding:
+            7px 10px;
+
+        background:
+            var(--research-navy);
+
+        color: white;
+
+        font-family: var(--mono);
+
+        font-size: .55rem;
+
+        letter-spacing: .12em;
+
+        text-transform: uppercase;
+
+        z-index: 10;
+
+        box-shadow:
+            4px 4px 0 rgba(7, 91, 211, .2);
+    }
+
+
+    /* =========================================================
+   IMAGE TECHNICAL DATA
+========================================================= */
+
+    .media-frame .image-data {
+
+        position: absolute;
+
+        left: 25px;
+        bottom: 22px;
+
+        z-index: 8;
+
+        font-family: var(--mono);
+
+        font-size: 8px;
+
+        letter-spacing: .12em;
+
+        color:
+            rgba(7, 91, 211, .65);
+    }
+
+
+    /* =========================================================
+   RESEARCH DETAILS
+========================================================= */
+
+    .research-details {
+
+        position: relative;
+
+        padding: 35px;
+
+        background:
+            rgba(255, 255, 255, .78);
+
+        border:
+            1px solid rgba(7, 91, 211, .13);
+
+        box-shadow:
+            0 18px 50px rgba(11, 29, 58, .06);
+
+        backdrop-filter:
+            blur(12px);
+
+        transform:
+            translateZ(30px);
+
+        transition:
+            transform .5s ease,
+            box-shadow .5s ease;
+    }
+
+
+    .research-details::before {
+
+        content: "";
+
+        position: absolute;
+
+        left: -1px;
+        top: 30px;
+        bottom: 30px;
+
+        width: 3px;
+
+        background:
+            linear-gradient(var(--research-orange),
+                var(--research-blue));
+    }
+
+
+    .research-details:hover {
+
+        transform:
+            translateZ(45px) translateY(-5px);
+
+        box-shadow:
+            0 30px 70px rgba(11, 29, 58, .11);
+    }
+
+
+    /* =========================================================
+   META
+========================================================= */
+
+    .entry-meta {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .year {
+
+        font-family: var(--mono);
+
+        font-size: .68rem;
+
+        letter-spacing: .1em;
+
+        color:
+            var(--research-muted);
+    }
+
+
+    /* =========================================================
+   STATUS
+========================================================= */
+
+    .status-stamp {
+
+        display: inline-flex;
+
+        padding:
+            5px 11px;
+
+        border:
+            1px solid currentColor;
+
+        border-radius: 3px;
+
+        font-family: var(--mono);
+
+        font-size: .55rem;
+
+        font-weight: 700;
+
+        letter-spacing: .12em;
+
+        text-transform: uppercase;
+
+        transform:
+            rotate(-2deg);
+    }
+
+
+    .status-stamp.published {
+
+        color:
+            #168052;
+
+        background:
+            rgba(22, 128, 82, .06);
+    }
+
+
+    .status-stamp.accepted {
+
+        color:
+            var(--research-blue);
+
+        background:
+            rgba(7, 91, 211, .06);
+    }
+
+
+    .status-stamp.ongoing {
+
+        color:
+            var(--research-orange);
+
+        background:
+            rgba(255, 91, 25, .06);
+    }
+
+
+    /* =========================================================
+   VENUE
+========================================================= */
+
+    .venue {
+
+        font-family: var(--mono);
+
+        font-size: .58rem;
+
+        letter-spacing: .12em;
+
+        text-transform: uppercase;
+
+        color:
+            var(--research-orange);
+
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+   TITLE
+========================================================= */
+
+    .research-details h3 {
+
+        margin: 0 0 18px;
+
+        font-family: var(--display);
+
+        font-size:
+            clamp(1.7rem,
+                3vw,
+                3rem);
+
+        line-height: .98;
+
+        letter-spacing: -.055em;
+
+        color:
+            var(--research-navy);
+    }
+
+
+    /* =========================================================
+   DESCRIPTION
+========================================================= */
+
+    .research-details p {
+
+        margin: 0 0 22px;
+
+        color:
+            var(--research-muted);
+
+        font-size: .82rem;
+
+        line-height: 1.8;
+
+        max-width: 560px;
+    }
+
+
+    /* =========================================================
+   MENTOR / INFO TAG
+========================================================= */
+
+    .mentor-tag {
+
+        display: inline-block;
+
+        padding:
+            11px 14px;
+
+        margin-bottom: 22px;
+
+        background:
+            linear-gradient(90deg,
+                rgba(7, 91, 211, .07),
+                rgba(7, 91, 211, .02));
+
+        border-left:
+            3px solid var(--research-blue);
+
+        font-family: var(--mono);
+
+        font-size: .58rem;
+
+        line-height: 1.5;
+
+        color:
+            var(--research-navy);
+    }
+
+
+    /* =========================================================
+   DOCUMENT LINK
+========================================================= */
+
+    .view-doc {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding:
+            11px 16px;
+
+        border:
+            1px solid var(--research-blue);
+
+        color:
+            var(--research-blue);
+
+        font-family: var(--mono);
+
+        font-size: .58rem;
+
+        font-weight: 700;
+
+        letter-spacing: .1em;
+
+        text-transform: uppercase;
+
+        text-decoration: none;
+
+        transition:
+            all .35s ease;
+    }
+
+
+    .view-doc:hover {
+
+        color: white;
+
+        background:
+            var(--research-blue);
+
+        transform:
+            translateX(5px);
+
+        box-shadow:
+            6px 6px 0 rgba(7, 91, 211, .15);
+    }
+
+
+    /* =========================================================
+   BOTTOM RESEARCH PROCESS
+========================================================= */
+
+    .research-process {
+
+        position: relative;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        margin-top: 130px;
+
+        border:
+            1px solid var(--research-line);
+
+        background:
+            rgba(255, 255, 255, .72);
+
+        backdrop-filter:
+            blur(10px);
+
+        box-shadow:
+            0 20px 50px rgba(11, 29, 58, .06);
+    }
+
+
+    .process-step {
+
+        position: relative;
+
+        padding:
+            25px 20px;
+
+        border-right:
+            1px solid var(--research-line);
+    }
+
+
+    .process-step:last-child {
+
+        border-right: 0;
+    }
+
+
+    .process-number {
+
+        font-family: var(--mono);
+
+        font-size: .55rem;
+
+        color:
+            var(--research-orange);
+    }
+
+
+    .process-step strong {
+
+        display: block;
+
+        margin:
+            10px 0 5px;
+
+        font-family: var(--display);
+
+        font-size: 1rem;
+
+        text-transform: uppercase;
+
+        color:
+            var(--research-navy);
+    }
+
+
+    .process-step span {
+
+        font-size: .65rem;
+
+        color:
+            var(--research-muted);
+    }
+
+
+    /* =========================================================
+   FLOATING DECORATIVE DATA
+========================================================= */
+
+    .research-journal .technical-float {
+
+        position: absolute;
+
+        font-family: var(--mono);
+
+        font-size: 8px;
+
+        letter-spacing: .15em;
+
+        color:
+            rgba(7, 91, 211, .4);
+
+        pointer-events: none;
+
+        animation:
+            floatData 5s ease-in-out infinite;
+    }
+
+
+    @keyframes floatData {
+
+        0%,
+        100% {
+            transform:
+                translateY(0);
+        }
+
+        50% {
+            transform:
+                translateY(-10px);
+        }
+    }
+
+
+    /* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+    .reveal {
+
+        opacity: 0;
+
+        transform:
+            translateY(45px) translateZ(-20px);
+
+        transition:
+            opacity .9s ease,
+            transform 1s cubic-bezier(.2, .8, .2, 1);
+    }
+
+
+    .reveal.show {
+
+        opacity: 1;
+
+        transform:
+            translateY(0) translateZ(0);
+    }
+
+
+    /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+    @media (max-width: 991px) {
+
+        .journal-header {
+
+            grid-template-columns: 1fr;
+
+            gap: 30px;
+        }
+
+        .journal-header h2 {
+
+            font-size:
+                clamp(3rem,
+                    11vw,
+                    5rem);
+        }
+
+        .research-stack::before {
+
+            display: none;
+        }
+
+        .research-entry,
+        .research-entry.reverse {
+
+            grid-template-columns: 1fr;
+
+            gap: 35px;
+
+            direction: ltr;
+        }
+
+        .research-entry::before {
+
+            display: none;
+        }
+
+        .research-details {
+
+            padding: 28px;
+        }
+
+        .research-process {
+
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+        .process-step:nth-child(2) {
+
+            border-right: 0;
+        }
+
+        .process-step {
+
+            border-bottom:
+                1px solid var(--research-line);
+        }
+    }
+
+
+    @media (max-width: 600px) {
+
+        .research-journal {
+
+            padding:
+                75px 0 90px;
+        }
+
+        .journal-header {
+
+            margin-bottom: 60px;
+        }
+
+        .journal-header h2 {
+
+            font-size: 3.1rem;
+
+            line-height: .9;
+        }
+
+        .research-stack {
+
+            gap: 70px;
+        }
+
+        .media-frame {
+
+            padding: 10px;
+        }
+
+        .document-tag {
+
+            top: 16px;
+            right: 16px;
+        }
+
+        .research-details {
+
+            padding: 24px;
+        }
+
+        .research-details h3 {
+
+            font-size: 1.7rem;
+        }
+
+        .research-process {
+
+            grid-template-columns: 1fr;
+        }
+
+        .process-step {
+
+            border-right: 0;
+
+            border-bottom:
+                1px solid var(--research-line);
+        }
+
+        .process-step:last-child {
+
+            border-bottom: 0;
+        }
+    }
+</style>
+
+<body>
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <!-- BRAND -->
+            <a class="brand" href="index.html" aria-label="Krshay Venkatesan — Home" style="margin-bottom: 10px;">
+                <span class="brand-mark">K</span>
+                <span class="brand-name">
+                </span>
+                <br>
+            </a>
+            <!-- NAVIGATION -->
+            <nav class="main-nav" aria-label="Primary navigation">
+
+                <a href="index.html" class="active">
+                    <span>HOME</span>
+                </a>
+
+                <a href="research.html">
+                    <span>RESEARCH</span>
+                </a>
+
+                <a href="projects.html">
+                    <span>PROJECTS</span>
+                </a>
+
+                <a href="internships.html">
+                    <span>INTERNSHIPS</span>
+                </a>
+
+                <a href="academics.html">
+                    <span>ACADEMIC</span>
+                </a>
+
+                <a href="impact.html">
+                    <span>IMPACT</span>
+                </a>
+
+                <a href="awards.html">
+                    <span>AWARDS</span>
+                </a>
+
+                <a href="interests.html">
+                    <span>INTERESTS</span>
+                </a>
+
+            </nav>
+
+            <!-- MOBILE MENU -->
+            <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" onclick="
+                    document.body.classList.toggle('menu-open');
+                    this.setAttribute(
+                        'aria-expanded',
+                        document.body.classList.contains('menu-open')
+                    );
+                ">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+    <main>
+        <section class="page-hero">
+            <div class="container" style="max-width: 900px; text-align: center; margin-top: -25px;">
+                <div class="page-kicker">01 · Research Paper</div>
+                <h1>From equations<br>to probability.</h1>
+                <br>
+                <p style="max-width: 600px; margin: 0 auto;">
+                    Research sits at the intersection of mechanical systems, human performance, materials, energy and
+                    data. These are the questions I am currently turning into models, experiments and papers.
+                </p>
+                <a class="btn back" href="index.html">← Back to foundation</a>
+            </div>
+        </section>
+        <section class="research-journal" id="research">
+
+            <div class="container">
+
+                <!-- =========================================
+             RESEARCH HEADER
+        ========================================== -->
+
+                <div class="journal-header reveal">
+
+                    <div>
+
+                        <div class="kicker">
+                            Technical Documentation
+                        </div>
+
+                        <h2>
+                            From equations<br>
+                            <span>to probability.</span>
+                        </h2>
+
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Research sits at the intersection of
+                            mechanical systems, human performance,
+                            materials, energy and data.
+                        </p>
+
+                        <p style="margin-top:18px">
+
+                            I turn real-world questions into
+                            models, experiments, analysis and
+                            engineering systems.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+             RESEARCH STACK
+        ========================================== -->
+
+                <div class="research-stack">
+
+
+                    <!-- =====================================
+                 RESEARCH 01
+            ====================================== -->
+
+                    <article class="research-entry reveal" data-number="01">
+
+                        <div class="research-media">
+
+                            <div class="media-frame" data-tilt>
+
+                                <img src="assets/drawing/reactor.png" alt="Molten Salt Reactor schematic"
+                                    class="blueprint-img">
+
+                                <div class="scan-line"></div>
+
+                                <div class="document-tag">
+                                    REF / PJIR-2024
+                                </div>
+
+                                <div class="image-data">
+                                    SYSTEM / ENERGY · SCALE / N.T.S.
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="research-details">
+
+                            <div class="entry-meta">
+
+                                <span class="year">
+                                    2024–25
+                                </span>
+
+                                <span class="status-stamp published">
+                                    Published
+                                </span>
+
+                            </div>
+
+                            <div class="venue">
+                                Princeton Journal of Interdisciplinary Research
+                            </div>
+
+                            <h3>
+                                Molten Salt Reactor Feasibility
+                                for India's 2070 Net-Zero Goal
+                            </h3>
+
+                            <p>
+                                Evaluated technical and policy
+                                feasibility of molten salt reactors
+                                as a pathway to India's net-zero
+                                carbon commitment, combining
+                                nuclear analysis with energy
+                                policy frameworks.
+                            </p>
+
+                            <div class="mentor-tag">
+                                MENTOR / DR. GEORGE ANWAR · UC BERKELEY
+                            </div>
+<br>
+                            <a href="#" class="view-doc magnetic">
+                                View Research Paper
+                                <span>↗</span>
+                            </a>
+                            <a href="#" class="view-doc magnetic">
+                                View Certification of Publication
+                                <span>↗</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =====================================
+                 RESEARCH 02
+            ====================================== -->
+
+                    <article class="research-entry reverse reveal" data-number="02">
+
+                        <div class="research-media">
+
+                            <div class="media-frame" data-tilt>
+
+                                <img src="assets/drawing/materials.png" alt="Composite materials engineering"
+                                    class="blueprint-img">
+
+                                <div class="scan-line"></div>
+
+                                <div class="document-tag">
+                                    REF / IEEE-CON-26
+                                </div>
+
+                                <div class="image-data">
+                                    SYSTEM / MATERIALS · ANALYSIS / PLS-SEM
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="research-details">
+
+                            <div class="entry-meta">
+
+                                <span class="year">
+                                    2025–26
+                                </span>
+
+                                <span class="status-stamp published">
+                                    Published
+                                </span>
+
+                            </div>
+
+                            <div class="venue">
+                                IEEE I2ITCON 2026
+                            </div>
+
+                            <h3>
+                                Composite Materials Adoption
+                                Study — PLS-SEM Analysis
+                            </h3>
+
+                            <p>
+                                Applied PLS-SEM multivariate
+                                regression to model the adoption
+                                of composite materials in aerospace
+                                and automotive industries.
+                            </p>
+
+                            <div class="mentor-tag">
+                                PUBLISHED / IEEE I2ITCON 2026 PRESENTATION
+                            </div>
+<br>
+                            <a href="#" class="view-doc magnetic">
+                                View Research Paper
+                                <span>↗</span>
+                            </a>
+                            <a href="#" class="view-doc magnetic">
+                                View Conference of Presentation
+                                <span>↗</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =====================================
+                 RESEARCH 03
+            ====================================== -->
+
+                    <article class="research-entry reveal" data-number="03">
+
+                        <div class="research-media">
+
+                            <div class="media-frame" data-tilt>
+
+                                <img src="assets/drawing/nature_1.jpg" alt="Mechanical tremor dampening spoon"
+                                    class="blueprint-img">
+
+                                <div class="scan-line"></div>
+
+                                <div class="document-tag">
+                                    REF / OX-JSS-92
+                                </div>
+
+                                <div class="image-data">
+                                    SYSTEM / HUMAN MOBILITY · FEA / STRUCTURAL
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="research-details">
+
+                            <div class="entry-meta">
+
+                                <span class="year">
+                                    2025–26
+                                </span>
+
+                                <span class="status-stamp published">
+                                    Published
+                                </span>
+
+                            </div>
+
+                            <div class="venue">
+                                Oxford Journal of Student Scholarship
+                            </div>
+
+                            <h3>
+                                Mechanical Tremor-Dampening
+                                Spoon for Parkinson's Disease
+                            </h3>
+
+                            <p>
+                                Designed and structurally analysed
+                                a mechanical spoon to reduce eating
+                                tremors, using FEA to validate the
+                                design under simulated loading
+                                conditions.
+                            </p>
+
+                            <div class="mentor-tag">
+                                MENTOR / IISc RESEARCHER
+                            </div>
+                            <br>
+                            <a href="#" class="view-doc magnetic">
+                                View Research Paper
+                                <span>↗</span>
+                            </a>
+                            <a href="#" class="view-doc magnetic">
+                                View Conference of Presentation
+                                <span>↗</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =====================================
+                 RESEARCH 04
+            ====================================== -->
+
+                    <article class="research-entry reverse reveal" data-number="04">
+
+                        <div class="research-media">
+
+                            <div class="media-frame" data-tilt>
+
+                                <img src="assets/drawing/chassis_1.png" alt="Vehicle chassis vibration analysis"
+                                    class="blueprint-img">
+
+                                <div class="scan-line"></div>
+
+                                <div class="document-tag">
+                                    REF / RAMBAL-IP
+                                </div>
+
+                                <div class="image-data">
+                                    SYSTEM / VEHICLE · MOTION / VIBRATION
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="research-details">
+
+                            <div class="entry-meta">
+
+                                <span class="year">
+                                    Ongoing
+                                </span>
+
+                                <span class="status-stamp ongoing">
+                                    Ongoing
+                                </span>
+
+                            </div>
+
+                            <div class="venue">
+                                Rambal Pvt. Ltd. · PhD Mentor
+                            </div>
+
+                            <h3>
+                                Chassis Vibration Analysis
+                                in Emergency Medical Vehicles
+                            </h3>
+
+                            <p>
+                                Analysing vibration profiles to
+                                understand stress on patients.
+                                Internship research focused on
+                                vibration transmission through
+                                emergency vehicle systems.
+                            </p>
+
+                            <div class="mentor-tag">
+                                INTERNSHIP / RAMBAL PVT. LTD. · CHENNAI
+                            </div>
+                            <br>
+                            <a href="#" class="view-doc magnetic">
+                                View Research Paper
+                                <span>↗</span>
+                            </a>
+                            <a href="#" class="view-doc magnetic">
+                                View Conference of Presentation
+                                <span>↗</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- =========================================
+             ENGINEERING PROCESS
+        ========================================== -->
+
+                <div class="research-process reveal">
+
+                    <div class="process-step">
+
+                        <span class="process-number">
+                            01
+                        </span>
+
+                        <strong>
+                            Observe
+                        </strong>
+
+                        <span>
+                            Real-world system
+                        </span>
+
+                    </div>
+
+
+                    <div class="process-step">
+
+                        <span class="process-number">
+                            02
+                        </span>
+
+                        <strong>
+                            Question
+                        </strong>
+
+                        <span>
+                            Identify the problem
+                        </span>
+
+                    </div>
+
+
+                    <div class="process-step">
+
+                        <span class="process-number">
+                            03
+                        </span>
+
+                        <strong>
+                            Model
+                        </strong>
+
+                        <span>
+                            Build the system
+                        </span>
+
+                    </div>
+
+
+                    <div class="process-step">
+
+                        <span class="process-number">
+                            04
+                        </span>
+
+                        <strong>
+                            Test
+                        </strong>
+
+                        <span>
+                            Validate the hypothesis
+                        </span>
+
+                    </div>
+
+
+                    <div class="process-step">
+
+                        <span class="process-number">
+                            05
+                        </span>
+
+                        <strong>
+                            Improve
+                        </strong>
+
+                        <span>
+                            Engineering outcome
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">Krshay Venkatesan</div>
+                <div class="footer-meta">Engineering · Motion · Systems</div>
+            </div>
+            <div class="footer-links"><a href="index.html">Home</a><a href="research.html">Research</a><a
+                    href="projects.html">Projects</a><a href="academics.html">Academic Credentials</a><a
+                    href="internships.html">Internships</a><a href="impact.html">Impact</a><a href="awards.html">Honors
+                    & Awards</a></div>
+        </div>
+    </footer>
+    <script>
+
+        /* =========================================================
+           RESEARCH PAGE INTERACTIONS
+        ========================================================= */
+
+
+        /* -----------------------------------------
+           SCROLL REVEAL
+        ----------------------------------------- */
+
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(element => {
+
+                revealObserver.observe(element);
+
+            });
+
+
+
+        /* -----------------------------------------
+           3D IMAGE TILT
+        ----------------------------------------- */
+
+        document
+            .querySelectorAll("[data-tilt]")
+            .forEach(card => {
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+                        const x =
+                            event.clientX - rect.left;
+
+                        const y =
+                            event.clientY - rect.top;
+
+                        const centerX =
+                            rect.width / 2;
+
+                        const centerY =
+                            rect.height / 2;
+
+                        const rotateY =
+                            ((x - centerX) / centerX) * 3;
+
+                        const rotateX =
+                            ((centerY - y) / centerY) * 3;
+
+                        card.style.transform =
+                            `
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateZ(25px)
+                    `;
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            `
+                    perspective(1000px)
+                    rotateX(0deg)
+                    rotateY(0deg)
+                    translateZ(20px)
+                    `;
+
+                    }
+                );
+
+            });
+
+
+
+        /* -----------------------------------------
+           MAGNETIC DOCUMENT BUTTON
+        ----------------------------------------- */
+
+        document
+            .querySelectorAll(".magnetic")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            button.getBoundingClientRect();
+
+                        const x =
+                            event.clientX -
+                            rect.left -
+                            rect.width / 2;
+
+                        const y =
+                            event.clientY -
+                            rect.top -
+                            rect.height / 2;
+
+                        button.style.transform =
+                            `
+                    translate(
+                        ${x * .12}px,
+                        ${y * .12}px
+                    )
+                    `;
+
+                    }
+                );
+
+
+                button.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        button.style.transform =
+                            "translate(0,0)";
+
+                    }
+                );
+
+            });
+
+
+
+        /* -----------------------------------------
+           CURSOR PARALLAX FOR RESEARCH IMAGES
+        ----------------------------------------- */
+
+        document.addEventListener(
+            "mousemove",
+            event => {
+
+                const x =
+                    (event.clientX /
+                        window.innerWidth - .5);
+
+                const y =
+                    (event.clientY /
+                        window.innerHeight - .5);
+
+                document
+                    .querySelectorAll(".technical-float")
+                    .forEach((element, index) => {
+
+                        const speed =
+                            (index + 1) * 5;
+
+                        element.style.transform =
+                            `
+                    translate(
+                        ${x * speed}px,
+                        ${y * speed}px
+                    )
+                    `;
+
+                    });
+
+            }
+        );
+
+
+
+        /* -----------------------------------------
+           ACTIVE RESEARCH NUMBER
+        ----------------------------------------- */
+
+        const researchEntries =
+            document.querySelectorAll(
+                ".research-entry"
+            );
+
+        const numberObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add("research-active");
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: .45
+                }
+            );
+
+
+        researchEntries.forEach(
+            entry =>
+                numberObserver.observe(entry)
+        );
+
+
+        /* -----------------------------------------
+           REDUCE MOTION FOR ACCESSIBILITY
+        ----------------------------------------- */
+
+        if (
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ) {
+
+            document
+                .querySelectorAll(".reveal")
+                .forEach(element => {
+
+                    element.style.opacity = "1";
+
+                    element.style.transform =
+                        "none";
+
+                });
+
+        }
+    </script>
+    <script src="header.js"></script>
+</body>
+
+</html>
